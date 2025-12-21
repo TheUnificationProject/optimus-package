@@ -8,8 +8,8 @@ import {
 import { InferSelectModel } from 'drizzle-orm';
 
 export type ProfileEntity = InferSelectModel<typeof profileSchema> & {
-  linkedIn?: LinkedInProfileEntity;
-  gitHub?: GitHubProfileEntity;
+  linkedIn: LinkedInProfileEntity;
+  gitHub: GitHubProfileEntity;
 };
 
 export type LinkedInProfileEntity = InferSelectModel<
@@ -33,11 +33,11 @@ export type Profile = {
   title: ProfileEntity['title'];
   biography: ProfileEntity['biography'];
   age: number | null;
-  linkedIn?: {
-    profileUrl: string;
+  linkedIn: {
+    profileUrl: string | null;
   };
-  gitHub?: {
-    profileUrl: string;
+  gitHub: {
+    profileUrl: string | null;
   };
   updatedAt: ProfileEntity['updatedAt'];
 };

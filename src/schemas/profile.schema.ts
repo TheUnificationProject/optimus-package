@@ -35,10 +35,11 @@ export const LINKEDIN_SLUG_MAX_LENGTH = 64;
 export const linkedInProfileSchema = pgTable('linkedin_profiles', {
   uuid: uuid('uuid').primaryKey().defaultRandom(),
   profileUuid: uuid('profile_uuid')
+    .unique()
     .notNull()
     .references(() => profileSchema.uuid, { onDelete: 'cascade' }),
 
-  slug: varchar('slug', { length: LINKEDIN_SLUG_MAX_LENGTH }).notNull(),
+  slug: varchar('slug', { length: LINKEDIN_SLUG_MAX_LENGTH }),
 
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
@@ -50,12 +51,13 @@ export const GITHUB_USERNAME_MAX_LENGTH = 64;
 export const gitHubProfileSchema = pgTable('github_profiles', {
   uuid: uuid('uuid').primaryKey().defaultRandom(),
   profileUuid: uuid('profile_uuid')
+    .unique()
     .notNull()
     .references(() => profileSchema.uuid, { onDelete: 'cascade' }),
 
   username: varchar('username', {
     length: GITHUB_USERNAME_MAX_LENGTH,
-  }).notNull(),
+  }),
 
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()
