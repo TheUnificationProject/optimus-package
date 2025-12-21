@@ -7,7 +7,11 @@ import {
 } from '@schemas/profile.schema';
 import { InferSelectModel } from 'drizzle-orm';
 
-export type ProfileEntity = InferSelectModel<typeof profileSchema>;
+export type ProfileEntity = InferSelectModel<typeof profileSchema> & {
+  linkedIn?: LinkedInProfileEntity;
+  gitHub?: GitHubProfileEntity;
+};
+
 export type LinkedInProfileEntity = InferSelectModel<
   typeof linkedInProfileSchema
 >;
@@ -25,10 +29,9 @@ export type Profile = {
   uuid: ProfileEntity['uuid'];
   firstName: ProfileEntity['firstName'];
   lastName: ProfileEntity['lastName'];
-  fullName: string;
+  fullName: `${ProfileEntity['firstName']} ${ProfileEntity['lastName']}`;
   title: ProfileEntity['title'];
   biography: ProfileEntity['biography'];
-  birthDate: ProfileEntity['birthDate'];
   age: number | null;
   linkedIn?: {
     profileUrl: string;
@@ -36,6 +39,5 @@ export type Profile = {
   gitHub?: {
     profileUrl: string;
   };
-  skills: ProfileSkill[];
   updatedAt: ProfileEntity['updatedAt'];
 };
