@@ -15,6 +15,13 @@
       "when": 1766339616231,
       "tag": "0001_foamy_sabretooth",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767864384450,
+      "tag": "0002_third_winter_soldier",
+      "breakpoints": true
     }
   ]
 }

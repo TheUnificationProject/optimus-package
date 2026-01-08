@@ -1,24 +1,32 @@
 import dotenv from 'dotenv';
-import { defineConfig } from 'drizzle-kit';
+import { Config, defineConfig } from 'drizzle-kit';
 
 dotenv.config();
 
 const SCHEMAS_PATH = './src/schemas/index.ts';
 const MIGRATIONS_PATH = './src/migrations';
 
-export default defineConfig({
-  schema: SCHEMAS_PATH,
-  out: MIGRATIONS_PATH,
-  dialect: 'postgresql',
-  dbCredentials: {
-    host: process.env.PG_HOST || 'localhost',
-    port: parseInt(process.env.PG_PORT || '5432', 10),
-    user: process.env.PG_USER || '',
-    password: process.env.PG_PASSWORD || '',
-    database: process.env.DB_NAME || '',
-    ssl:
-      process.env.PG_SSL_MODE === 'true'
-        ? { rejectUnauthorized: false }
-        : false,
-  },
-});
+function assertDatabaseUrl(url: string | undefined): asserts url is string {
+  if (typeof url !== 'string') {
+    throw new Error('DATABASE_URL is not a string');
+  }
+}
+
+function createConfig(): Config {
+  assertDatabaseUrl(process.env.DATABASE_URL);
+
+  return {
+    schema: SCHEMAS_PATH,
+    out: MIGRATIONS_PATH,
+    dialect: 'postgresql',
+    dbCredentials: {
+      url: process.env.DATABASE_URL,
+      ssl:
+        process.env.DATABASE_SSL_MODE === 'true'
+          ? { rejectUnauthorized: false }
+          : false,
+    },
+  };
+}
+
+export default defineConfig(createConfig());
