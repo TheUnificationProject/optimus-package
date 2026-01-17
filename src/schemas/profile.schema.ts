@@ -16,6 +16,12 @@ export const LAST_NAME_MAX_LENGTH = 64;
 
 export const TITLE_MAX_LENGTH = 128;
 
+export const LOCATION_MAX_LENGTH = 128;
+
+export const CONTACT_EMAIL_MAX_LENGTH = 320;
+
+export const CONTACT_PHONE_NUMBER_MAX_LENGTH = 32;
+
 export const profileSchema = pgTable('profiles', {
   uuid: uuid('uuid').primaryKey().defaultRandom(),
 
@@ -24,6 +30,11 @@ export const profileSchema = pgTable('profiles', {
   title: varchar('title', { length: TITLE_MAX_LENGTH }),
   biography: text('biography'),
   birthDate: timestamp('birth_date', { withTimezone: true }),
+  location: varchar('location', { length: LOCATION_MAX_LENGTH }),
+  contactEmail: varchar('contact_email', { length: CONTACT_EMAIL_MAX_LENGTH }),
+  contactPhoneNumber: varchar('contact_phone_number', {
+    length: CONTACT_PHONE_NUMBER_MAX_LENGTH,
+  }),
 
   updatedAt: timestamp('updated_at', { withTimezone: true })
     .notNull()

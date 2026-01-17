@@ -32,6 +32,9 @@ export type Profile = {
   fullName: `${ProfileEntity['firstName']} ${ProfileEntity['lastName']}`;
   title: ProfileEntity['title'];
   biography: ProfileEntity['biography'];
+  location: ProfileEntity['location'];
+  contactEmail: ProfileEntity['contactEmail'];
+  contactPhoneNumber: ProfileEntity['contactPhoneNumber'];
   age: number | null;
   linkedIn: {
     profileUrl: string | null;

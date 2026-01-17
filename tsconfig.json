@@ -21,7 +21,6 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "rootDir": "./src",
-    "baseUrl": "./",
     "paths": {
       "@schemas/*": ["./src/schemas/*"],
       "@/*": ["./src/*"]
