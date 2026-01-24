@@ -1,5 +1,4 @@
 import { profileSchema } from '@schemas/profile.schema';
-import { userSchema } from '@schemas/user.schema';
 import {
   index,
   pgTable,
@@ -39,9 +38,7 @@ export const contactMessageSchema = pgTable(
     organizationName: varchar('organization_name', {
       length: ORGANIZATION_NAME_MAX_LENGTH,
     }),
-    email: varchar('email', { length: EMAIL_MAX_LENGTH })
-      .notNull()
-      .references(() => userSchema.email),
+    email: varchar('email', { length: EMAIL_MAX_LENGTH }).notNull(),
     phoneNumber: varchar('phone_number', { length: PHONE_NUMBER_MAX_LENGTH }),
     message: text('message').notNull(),
 
