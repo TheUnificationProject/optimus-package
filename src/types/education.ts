@@ -5,11 +5,11 @@ import {
 } from '@schemas/education.schema';
 import { InferSelectModel } from 'drizzle-orm';
 
-export type EducationEntity = InferSelectModel<typeof educationSchema>;
+export type EducationSchema = typeof educationSchema;
+export type EducationEntity = InferSelectModel<EducationSchema>;
 
-export type EducationSkillsEntity = InferSelectModel<
-  typeof educationSkillsSchema
->;
+export type EducationSkillsSchema = typeof educationSkillsSchema;
+export type EducationSkillsEntity = InferSelectModel<EducationSkillsSchema>;
 
 export type EducationSkill = AssociatedSkill;
 

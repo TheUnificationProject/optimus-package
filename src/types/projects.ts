@@ -2,9 +2,11 @@ import { AssociatedSkill } from '@/types/skills';
 import { projectSchema, projectSkillsSchema } from '@schemas/project.schema';
 import { InferSelectModel } from 'drizzle-orm';
 
-export type ProjectEntity = InferSelectModel<typeof projectSchema>;
+export type ProjectSchema = typeof projectSchema;
+export type ProjectEntity = InferSelectModel<ProjectSchema>;
 
-export type ProjectSkillsEntity = InferSelectModel<typeof projectSkillsSchema>;
+export type ProjectSkillsSchema = typeof projectSkillsSchema;
+export type ProjectSkillsEntity = InferSelectModel<ProjectSkillsSchema>;
 
 export type ProjectSkill = AssociatedSkill;
 

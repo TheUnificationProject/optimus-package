@@ -1,7 +1,8 @@
 import { userSchema } from '@schemas/user.schema';
 import { InferSelectModel } from 'drizzle-orm';
 
-export type UserEntity = InferSelectModel<typeof userSchema>;
+export type UserSchema = typeof userSchema;
+export type UserEntity = InferSelectModel<UserSchema>;
 
 export type UserRole = UserEntity['role'];
 

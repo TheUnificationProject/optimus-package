@@ -7,16 +7,20 @@ import {
 } from '@schemas/profile.schema';
 import { InferSelectModel } from 'drizzle-orm';
 
-export type ProfileEntity = InferSelectModel<typeof profileSchema> & {
+export type ProfileSchema = typeof profileSchema;
+export type ProfileEntity = InferSelectModel<ProfileSchema> & {
   linkedIn: LinkedInProfileEntity;
   gitHub: GitHubProfileEntity;
 };
 
-export type LinkedInProfileEntity = InferSelectModel<
-  typeof linkedInProfileSchema
->;
-export type GitHubProfileEntity = InferSelectModel<typeof gitHubProfileSchema>;
-export type ProfileSkillsEntity = InferSelectModel<typeof profileSkillsSchema>;
+export type LinkedInProfileSchema = typeof linkedInProfileSchema;
+export type LinkedInProfileEntity = InferSelectModel<LinkedInProfileSchema>;
+
+export type GitHubProfileSchema = typeof gitHubProfileSchema;
+export type GitHubProfileEntity = InferSelectModel<GitHubProfileSchema>;
+
+export type ProfileSkillsSchema = typeof profileSkillsSchema;
+export type ProfileSkillsEntity = InferSelectModel<ProfileSkillsSchema>;
 
 export type ProfileSkill = AssociatedSkill;
 

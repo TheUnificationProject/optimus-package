@@ -5,11 +5,11 @@ import {
 } from '@schemas/experience.schema';
 import { InferSelectModel } from 'drizzle-orm';
 
-export type ExperienceEntity = InferSelectModel<typeof experienceSchema>;
+export type ExperienceSchema = typeof experienceSchema;
+export type ExperienceEntity = InferSelectModel<ExperienceSchema>;
 
-export type ExperienceSkillsEntity = InferSelectModel<
-  typeof experienceSkillsSchema
->;
+export type ExperienceSkillsSchema = typeof experienceSkillsSchema;
+export type ExperienceSkillsEntity = InferSelectModel<ExperienceSkillsSchema>;
 
 export type ExperienceSkill = AssociatedSkill;
 

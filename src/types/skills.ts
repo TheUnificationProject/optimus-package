@@ -1,7 +1,8 @@
 import { skillSchema } from '@schemas/skill.schema';
 import { InferSelectModel } from 'drizzle-orm';
 
-export type SkillEntity = InferSelectModel<typeof skillSchema>;
+export type SkillSchema = typeof skillSchema;
+export type SkillEntity = InferSelectModel<SkillSchema>;
 
 export type Skill = {
   slug: SkillEntity['slug'];
