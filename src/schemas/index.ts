@@ -8,5 +8,5 @@ export {
   profileSkillsSchema,
 } from './profile.schema';
 export { projectSchema, projectSkillsSchema } from './project.schema';
-export { skillSchema } from './skill.schema';
+export { categoryEnum, skillSchema } from './skill.schema';
 export { roleEnum, userSchema } from './user.schema';
